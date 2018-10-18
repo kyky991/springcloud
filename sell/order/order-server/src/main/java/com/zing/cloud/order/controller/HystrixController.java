@@ -32,8 +32,8 @@ public class HystrixController {
 		}
 
 		RestTemplate restTemplate = new RestTemplate();
-		return restTemplate.postForObject("http://127.0.0.1:8005/product/listForOrder",
-				Arrays.asList("157875196366160022"),
+		return restTemplate.postForObject("http://127.0.0.1:8080/product/listForOrder",
+				Arrays.asList("1539746650964557976"),
 				String.class);
 
 //		throw new RuntimeException("发送异常了");
