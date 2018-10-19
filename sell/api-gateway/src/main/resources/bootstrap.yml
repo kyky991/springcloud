@@ -13,10 +13,3 @@ eureka:
       defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
   instance:
     prefer-ip-address: true
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000

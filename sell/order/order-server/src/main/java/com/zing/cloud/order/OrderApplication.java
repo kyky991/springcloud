@@ -7,12 +7,14 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 
 @EnableFeignClients(basePackages = "com.zing.cloud.product.client")
 //@SpringBootApplication
 //@EnableDiscoveryClient
 //@EnableCircuitBreaker
 @SpringCloudApplication
+@ComponentScan(basePackages = "com.zing.cloud")//需要扫描到ProductClient中的@Component注解，不加启动报错
 @EnableHystrixDashboard
 public class OrderApplication {
 

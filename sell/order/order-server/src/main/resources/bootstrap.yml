@@ -14,7 +14,7 @@ spring:
           content-type: application/json
   zipkin:
     base-url: http://zipkin:9411/
-    #当前追踪路径的数据放在内存中
+    #追踪路径的数据通过http发送
     sender:
       type: web
   sleuth:
@@ -27,18 +27,12 @@ eureka:
       defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
   instance:
     prefer-ip-address: true
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3000
 management:
   endpoints:
     web:
       exposure:
         include: hystrix.stream
+##feign客户端开启Hystrix断路器
 feign:
   hystrix:
     enabled: true

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name = "product")//, fallback = ProductClient.ProductClientFallback.class)
+@FeignClient(name = "product", fallback = ProductClient.ProductClientFallback.class)
 public interface ProductClient {
 
     @GetMapping("/msg")
