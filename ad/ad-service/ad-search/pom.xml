@@ -65,6 +65,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.shyiko</groupId>
+            <artifactId>mysql-binlog-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.zing.ad</groupId>
             <artifactId>ad-common</artifactId>
             <version>1.0.0</version>

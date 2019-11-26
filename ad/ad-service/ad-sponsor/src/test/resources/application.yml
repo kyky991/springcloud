@@ -1,10 +1,10 @@
 server:
-  port: 7100
+  port: 7000
   servlet:
-    context-path: /ad-search
+    context-path: /ad-sponsor
 spring:
   application:
-    name: eureka-client-ad-search
+    name: eureka-client-ad-sponsor
   jpa:
     show-sql: true
     hibernate:
@@ -25,21 +25,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka1:8761/eureka/
-feign:
-  hystrix:
-    enabled: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-adconf:
-  mysql:
-    host: 127.0.0.1
-    port: 3306
-    username: root
-    password: 123456
-    binlogName: ""
-    position: -1
-  kafka:
-    topic: ad-search-mysql-data
