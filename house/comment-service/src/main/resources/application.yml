@@ -1,0 +1,53 @@
+server:
+  port: 8085
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+logbook:
+  write:
+    level: info
+  format:
+    style: http
+#logging:
+#  config: classpath:log4j2.xml
+spring:
+  application:
+    name: comment
+  druid:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/comment?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    max-active: 20
+    min-idle: 3
+    max-wait: 10000
+    validation-query: SELECT 1
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+  redis:
+    host: 192.168.110.128
+    port: 6379
+    timeout: 6000ms
+    jedis:
+      pool:
+        max-active: 5
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8666/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+
+user.service.name: user
+house.service.name: house
+comment.service.name: comment

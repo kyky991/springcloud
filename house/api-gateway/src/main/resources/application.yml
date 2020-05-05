@@ -1,0 +1,87 @@
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+spring:
+  application:
+    name: api-gateway
+  boot:
+    admin:
+      client:
+        url: http://localhost:8070
+  mail:
+    host: smtp.163.com
+    username: cyunzing@163.com
+    password: xxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  freemarker:
+    cache: true
+    charset: UTF-8
+    content-type: text/html;charset=UTF-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    allow-session-override: true
+    suffix: .ftl
+    settings:
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      number_format: 0.##########
+      default_encoding: UTF-8
+      auto_import: common/common.ftl as common
+      template_exception_handler: ignore
+      template_update_delay: 0
+#  sleuth:
+#    sampler:
+#      probability: 1
+#  zipkin:
+#    base-url: http://localhost:9411
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8666/eureka/
+    register-with-eureka: false
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1
+      circuitBreaker:
+        errorThresholdPercentage: 1
+        sleepWindowInMilliseconds: 100000
+  threadpool:
+    default:
+      coreSize: 1
+      maxQueueSize: 1
+      maximumSize: 1
+logbook:
+  write:
+    level: TRACE
+  format:
+    style: http
+#logging:
+#  config: classpath:log4j2.xml
+file:
+  #\u672C\u5730\u5B58\u653E\u7684\u6587\u4EF6\u8DEF\u5F84,\u53EF\u4EE5\u4FEE\u6539\u6210\u81EA\u5DF1\u7684\u56FE\u7247\u5B58\u653E\u8DEF\u5F84,\u5BF9\u5E94nginx.conf\u91CCalias\u5BF9\u5E94\u76EE\u5F55(\u82E5\u672C\u5730\u5B89\u88C5\u4E86nginx\u670D\u52A1\u5668,\u5F00\u542F\u5982\u4E0B\u914D\u7F6E)
+  path: I:/tmp/imgs
+  #\u9759\u6001\u8D44\u6E90\u5730\u5740\u524D\u7F00(\u82E5\u672C\u5730\u5B89\u88C5\u4E86nginx\u670D\u52A1\u5668,\u5F00\u542F\u5982\u4E0B\u914D\u7F6E)
+  prefix: http://127.0.0.1:8081/images
+domain:
+  name: 127.0.0.1:8090
+
+user.service.name: user
+house.service.name: house
+comment.service.name: comment
