@@ -1,11 +1,11 @@
 server:
-  port: 7001
+  port: 7002
   servlet:
-    context-path: /coupon-template
+    context-path: /coupon-distribution
 
 spring:
   application:
-    name: eureka-client-coupon-template
+    name: eureka-client-coupon-distribution
   jpa:
     show-sql: true
     hibernate:
@@ -37,25 +37,40 @@ spring:
     # password:
     # 连接超时时间
     timeout: 10000
+  kafka:
+    bootstrap-servers:
+      - kafkkkkka:9092
+    consumer:
+      group-id: coupon-x
+      auto-offset-reset: latest
+  # 开启 ribbon 重试机制, 即获取服务失败是否从另外一个节点重试
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
 
 eureka:
   client:
     service-url:
       defaultZone: http://server1:8001/eureka/
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-info:
-  app:
-    name: coupon-template
-    groupId: coupon-service
-    artifactId: coupon-template
-    version: 1.0-SNAPSHOT
-
 logging:
   level:
     com.zing.coupon: debug
+
+feign:
+  hystrix:
+    # Hystrix 默认是关闭的
+    enabled: true
+  client:
+    config:
+      # 全局的
+      default:
+        # 默认的连接超时时间是 10s
+        connectTimeout: 2000
+        readTimeout: 5000
+      # 单独服务的配置
+      eureka-client-coupon-template:
+        # 默认的连接超时时间是 10s
+        connectTimeout: 3000
+        readTimeout: 5000
