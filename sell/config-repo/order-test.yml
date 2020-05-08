@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false
+  rabbitmq:
+    host: 192.168.110.129
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    host: 192.168.110.129
+    port: 6379
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic  
+env:
+  test

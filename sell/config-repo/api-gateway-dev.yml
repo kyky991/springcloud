@@ -1,0 +1,21 @@
+spring:
+  redis:
+    host: 192.168.110.129
+    port: 6379
+zuul:
+  #全部服务忽略敏感头(全部服务都可以传递cookie)
+  sensitive-headers:
+  routes:
+    myProduct:
+      path: /myProduct/**
+      serviceId: PRODUCT
+    #简洁写法
+#    product: /myProduct/**
+  ignored-patterns:
+    - /**/product/listForOrder
+management:
+  security:
+    enabled: false
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000
