@@ -95,7 +95,7 @@ public class ManJianZheKouExecutor extends AbstractExecutor implements RuleExecu
 
         // 先计算满减
         if (targetSum >= manJianBase) {
-            targetSum -= manJianBase;
+            targetSum -= manJianQuota;
             ctInfos.add(manJian);
         }
 
